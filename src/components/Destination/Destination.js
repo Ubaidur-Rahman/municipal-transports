@@ -17,6 +17,10 @@ const Destination = () => {
                     <h6>Pick To</h6>
                     <input className='w-100' type="text" placeholder="Mohakali" />
                 </div>
+                <div>
+                    <h6>Pick a date</h6>
+                    <input className='w-100' type="date" placeholder="01/02/2022" />
+                </div>
                 <button className='w-100 my-3 btn btn-primary text-uppercase'>search</button>
             </div>
             
