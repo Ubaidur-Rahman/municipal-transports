@@ -1,0 +1,27 @@
+.nav-item{
+    margin-left: 10px;
+    text-decoration: none;
+     font-weight: 600;
+     color: black;
+     border: 0 solid black;
+     line-height: 30px;
+     padding: 8px;
+     border-radius: 3px;
+     background-color: rgb(194, 255, 133);
+}
+
+.nav-item:hover{
+   
+     color: rgb(0, 81, 255);
+     
+     background-color: goldenrod;
+}
+.header{
+    background-color: rgb(117, 50, 50);
+    color: white;
+    
+}
+.log-in-btn{
+    text-decoration: none;
+    font-weight: 600;
+}

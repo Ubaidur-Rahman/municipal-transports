@@ -1,0 +1,12 @@
+#card-img{
+    max-width: 100%;
+}
+.transport-card{
+    border: 1px solid goldenrod;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 4px 5px 10px grey;
+    background-color: rgba(75, 114, 52, 0.973);
+}
