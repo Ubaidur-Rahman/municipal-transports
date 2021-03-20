@@ -45,8 +45,11 @@ const Login = () => {
             const {displayName, email } = result.user;
             const signedInUser = {name: displayName, email}
             setLoggedInUser(signedInUser);
-            setLoggedInUser(loggedInUser)
-            history.replace(from);
+            console.log(signedInUser);
+            if (loggedInUser.name) {
+                history.replace(from);
+            }
+            
         
         })
         .catch((error) => {
@@ -62,11 +65,18 @@ const Login = () => {
     const handleFbSignIn = ()=>{
     firebase.auth().signInWithPopup(facebookProvider)
     .then((result) => {
+        console.log(result);
         const {displayName, email } = result.user;
         const signedInUser = {name: displayName, email}
+        const newUserInfo = {...user};
+            newUserInfo.error = ''
+            newUserInfo.success = true;
+            setUser(newUserInfo)
         setLoggedInUser(signedInUser);
-        setLoggedInUser(loggedInUser)
-        history.replace(from);
+        console.log(signedInUser);
+        if (loggedInUser.name) {
+            history.replace(from);
+        }
   })
   .catch((error) => {
     const newUserInfo = {...user}
@@ -108,6 +118,7 @@ const Login = () => {
             const {displayName, email } = userCredential.user;
             const signedInUser = {name: displayName, email}
             setLoggedInUser(signedInUser);
+            console.log(signedInUser);
             history.replace(from);
             
   })
@@ -138,16 +149,13 @@ const Login = () => {
             isFieldValid = e.target.value.length >= 6 && /\d{1}/.test(e.target.value);
         }
         
-        
         if (isFieldValid) {
-            
             const newUserInfo = {...user};
             console.log(newUserInfo);
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
             console.log(newUserInfo);
         }
-
     }
 
     const updateUserName = name => {
@@ -161,12 +169,6 @@ const Login = () => {
           console.log(error);
         });
     }
-
-
-
-
-
-
 
 
     return (

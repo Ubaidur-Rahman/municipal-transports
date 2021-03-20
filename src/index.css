@@ -5,9 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(../src/components/Home/images/background.jpg);
+  background: url(../src/components/Home/images/background-city.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  width: 100%;
 }
 
 code {
