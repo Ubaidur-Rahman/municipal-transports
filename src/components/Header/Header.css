@@ -2,12 +2,12 @@
     margin-left: 10px;
     text-decoration: none;
      font-weight: 600;
-     color: black;
+     color: rgb(255, 255, 255);
      border: 0 solid black;
      line-height: 30px;
      padding: 8px;
      border-radius: 3px;
-     background-color: rgb(194, 255, 133);
+     background-color: #0B5ED7;
 }
 
 .nav-item:hover{
@@ -17,7 +17,7 @@
      background-color: goldenrod;
 }
 .header{
-    background-color: rgb(117, 50, 50);
+    background-color: #FF5500;
     color: white;
     
 }

@@ -4,7 +4,8 @@ import './Destination.css'
 import {
     GoogleMap,
     useLoadScript,
-    
+    Marker,
+    InfoWindow,
   } from "@react-google-maps/api";
   
 
@@ -16,8 +17,8 @@ import {
   };
 
   const center = {
-    lat: 33.147984,
-    lng: 73.753670,
+    lat: 24.894930,
+    lng: 91.868706
   };
 
   const App= () => {
@@ -58,6 +59,7 @@ const Destination = () => {
                             mapContainerStyle={mapContainerStyle}
                             zoom={10}
                             center={center}>
+                            <Marker position={{ lat: 24.894930, lng: 91.868706}} />
                         </GoogleMap>
                 </div>
             </div>
