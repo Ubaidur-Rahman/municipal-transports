@@ -1,30 +1,12 @@
-import React from 'react';
-import Transport from '../Transport/Transport';
-import bikeImg from '../Home/images/bike.png'
-import carImg from '../Home/images/car.png'
-import busImg from '../Home/images/bus.png'
-import trainImg from '../Home/images/train.png'
+import React, { useState } from 'react';
+import transportsData from '../TransportsData/transportData'
 import './Home.css'
+import Transport from '../Transport/Transport';
 
 
 const Home = () => {
-    const transports = [
-        {
-            name : 'BIKE',
-            img : bikeImg
-        },
-        {
-            name : 'CAR',
-            img : carImg
-        },
-        {
-            name : 'BUS',
-            img : busImg
-        },
-        {
-            name : 'TRAIN',
-            img : trainImg
-        }]
+    const [transports, setTransports] = useState(transportsData)
+    
         const style = {
             marginTop: '150px'
         }

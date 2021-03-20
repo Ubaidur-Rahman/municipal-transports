@@ -5,6 +5,8 @@ import firebaseConfig from './firebase.config';
 import {UserContext} from '../../App'
 import { useHistory, useLocation } from 'react-router';
 import "./Login.css"
+import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
  
 
@@ -33,6 +35,7 @@ const Login = () => {
 }
     
     const googleProvider = new firebase.auth.GoogleAuthProvider();
+    var facebookProvider = new firebase.auth.FacebookAuthProvider();
 
     const handleGoogleSignIn = ()=>{
                 
@@ -42,6 +45,7 @@ const Login = () => {
             const {displayName, email } = result.user;
             const signedInUser = {name: displayName, email}
             setLoggedInUser(signedInUser);
+            setLoggedInUser(loggedInUser)
             history.replace(from);
         
         })
@@ -54,6 +58,25 @@ const Login = () => {
             console.log(errorMessage);
         });
     }
+
+    const handleFbSignIn = ()=>{
+    firebase.auth().signInWithPopup(facebookProvider)
+    .then((result) => {
+        const {displayName, email } = result.user;
+        const signedInUser = {name: displayName, email}
+        setLoggedInUser(signedInUser);
+        setLoggedInUser(loggedInUser)
+        history.replace(from);
+  })
+  .catch((error) => {
+    const newUserInfo = {...user}
+        newUserInfo.success = false;
+        newUserInfo.error = error.message;
+        setUser(newUserInfo);
+        var errorMessage = error.message;
+        console.log(errorMessage);
+  });
+}
 
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -70,7 +93,6 @@ const Login = () => {
   })
     .catch(error => {
         const newUserInfo = {...user}
-
         newUserInfo.success = false;
         newUserInfo.error = error.message;
         setUser(newUserInfo);
@@ -182,8 +204,11 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <p className="text-danger text-center">{user.error}</p>
+                                    {/* {
+                                     !newUser && (user.password !== user.confirmPassword) && <p className="text-danger text-center">password not matched</p>
+                                    } */}
                                     {
-                                        user.success && <p className="text-success text-center">User {newUser ?'Created': 'Logged in'} Successfully. {newUser ?'Click Login button ': ''} </p>
+                                        user.success && <p className="text-success text-center">User {newUser ?'Created': 'Signup'} Successfully Click Login button. </p>
                                     }
                                     {newUser && <input className="btn btn-primary text-uppercase w-100" type="submit" value="Signup"></input>}
                                     {!newUser && <input className="btn btn-primary text-uppercase w-100" type="submit" value="Login"></input>}
@@ -192,8 +217,8 @@ const Login = () => {
                                     <hr className="my-4" />
                                     <p className="text-center">or</p>
                                     <div className="text-center">
-                                    <button className="btn w-100 btn-google text-uppercase " type="submit" onClick={handleGoogleSignIn} ><i className="fab fa-google mr-2"></i>Continue with Google</button>
-                                    <button className="btn w-100 btn-facebook text-uppercase mt-1" type="submit"><i className="fab fa-facebook-f mr-2"></i>Continue with Facebook</button>
+                                    <button className="btn w-100 btn-google text-uppercase " type="submit" onClick={handleGoogleSignIn} ><FontAwesomeIcon icon={faGoogle} size="2x" /> Continue with Google</button>
+                                    <button className="btn w-100 btn-facebook text-uppercase mt-1" type="submit" onClick ={handleFbSignIn}><FontAwesomeIcon icon={faFacebookF} size="2x" /> Continue with Facebook</button>
                                     </div>
                             </form>
                             </div>

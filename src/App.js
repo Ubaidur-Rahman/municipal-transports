@@ -18,12 +18,8 @@ export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
-  const style = {
-    backgroundImage: "linearGradient(toRight, rgba(26, 21, 21, 0), rgba(75, 114, 52, 0.973))"
-  }
-
   return (
-    <div className="App">
+    
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
     
     <Router >
@@ -56,11 +52,10 @@ function App() {
         </Switch>
       </Router>
     </UserContext.Provider>
-    </div>
+   
   );
 }
 
 export default App;
 
 
-// maps apiKey: 'AIzaSyCw1Cu5QmZqsFLWq-D7m12E3Qqjjj13xWY'

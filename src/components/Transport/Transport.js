@@ -4,7 +4,7 @@ import { UserContext } from '../../App';
 import "./Transport.css"
 
 const Transport = (props) => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    console.log(props);
     const {name, img, transportName} = props.transport
     
     return (
@@ -12,7 +12,7 @@ const Transport = (props) => {
             <div className="transport-card p-5 " onClick={() => transportName}>
                 <Link className="text-decoration-none" to={`transport/${name}`}>
                     <img id="card-img" src={img} alt={name}/>
-                    <h1 className="text-primary">{name}</h1>
+                    <h1 className="text-dark mt-3">{name}</h1>
                 </Link>
             </div>
         </div>
