@@ -12,6 +12,7 @@ const transports = [
         get1: 'bike1',
         get2: 'bike2',
         get3: 'bike3',
+        person: 1 
 
     },
     {
@@ -21,6 +22,7 @@ const transports = [
         get1: 'car1',
         get2: 'car2',
         get3: 'car3',
+        person: 4
     },
     {
         name : 'BUS',
@@ -29,6 +31,7 @@ const transports = [
         get1: 'bus1',
         get2: 'bus2',
         get3: 'bus3',
+        person: 4
     },
     {
         name : 'TRAIN',
@@ -37,6 +40,7 @@ const transports = [
         get1: 'train1',
         get2: 'train2',
         get3: 'train3',
+        person: 5
     }
 ]
 export default transports

@@ -103,6 +103,7 @@ const handleSubmit = (e) =>{
                 const {displayName, email } = userCredential.user;
                 const signedInUser = {name: displayName, email}
                 setLoggedInUser(signedInUser);
+                setNewUser(signedInUser);
                 history.replace(from);
             })
     .catch((error) => {

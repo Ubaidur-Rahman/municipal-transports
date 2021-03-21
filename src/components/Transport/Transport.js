@@ -4,7 +4,6 @@ import { UserContext } from '../../App';
 import "./Transport.css"
 
 const Transport = (props) => {
-    console.log(props);
     const {name, img, transportName} = props.transport
     
     return (

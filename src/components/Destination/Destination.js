@@ -7,6 +7,7 @@ import {
     Marker,
   } from "@react-google-maps/api";
 import SearchResult from '../SearchResult/SearchResult';
+import searchData from '../TransportsData/transportData'
   
 
 
@@ -32,8 +33,15 @@ import SearchResult from '../SearchResult/SearchResult';
 
 
 const Destination = () => {
+
+  const [searchResult, setSearchResult] = useState([])
+  useEffect(()=>{
+  setSearchResult(searchData)
+  console.log(searchResult);
+  } , [])
+
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-    const [searchArea, setSearchArea] = useState(false)
+    const [searchArea, setSearchArea] = useState({})
    
 
 
@@ -46,7 +54,7 @@ const Destination = () => {
     }
   
     const handleSearchResult = (e) => {
-      
+      e.preventDefault()
     }
 // maps apiKey: 'AIzaSyCw1Cu5QmZqsFLWq-D7m12E3Qqjjj13xWY'
     
@@ -54,20 +62,34 @@ const Destination = () => {
         <div className="container d-xsm-flex ">
             <div className="row mt-5 ">
                 <div className='search-area col-md-4 col-12 ali'>
+                    <form action="" onSubmit={handleSearchResult} >
                     <div>
-                    {searchArea && <h1>{searchArea.pickFrom} to {searchArea.pickTo}</h1>}
-                        <h6>Pick From</h6>
-                        <input className='w-100' name="pickFrom" onBlur={handleBlur} type="text" placeholder="Uttara" autoFocus />
+                      <div>
+                            <h6>Pick From</h6>
+                            <input className='w-100' name="pickFrom" onChange={handleBlur} type="text" placeholder="Uttara" autoFocus />
+                      </div>
+                      <div>
+                          <h6>Pick To</h6>
+                          <input className='w-100' name="pickTo" onChange={handleBlur} type="text" placeholder="Mohakali" />
+                      </div>
+                      <div>
+                          <h6>Pick a date</h6>
+                          <input className='w-100' onChange={handleBlur} type="date" />
+                      </div>
+                      <button className='w-100 my-3 btn btn-primary text-uppercase'>search</button>
                     </div>
+                    </form>
                     <div>
-                        <h6>Pick To</h6>
-                        <input className='w-100' name="pickTo" onBlur={handleBlur} type="text" placeholder="Mohakali" />
+                          {searchArea && <h1 className="text-center">{searchArea.pickFrom} to {searchArea.pickTo}</h1>}
+                          <h5 className="text-center">Available Transport</h5>
+                          <div className="d-flex justify-content-between"> 
+                              <img style={{height: '50px'}} src={searchResult?.[0]?.img} alt=""/>
+                              <h4>{searchResult?.[0]?.get1}</h4>
+                              <h4>{searchResult?.[0]?.person}</h4>
+                              <h4>$ {searchResult?.[0]?.price}</h4>
+                          </div>
+                          
                     </div>
-                    <div>
-                        <h6>Pick a date</h6>
-                        <input className='w-100' onChange={handleSearchResult} type="date" placeholder="01/02/2022" />
-                    </div>
-                    <button onClick={handleSearchResult} className='w-100 my-3 btn btn-primary text-uppercase'>search</button>
                 </div>
             
                 <div className='maps col-md-8 col-12'>
