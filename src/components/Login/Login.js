@@ -42,13 +42,13 @@ const Login = () => {
         firebase.auth()
         .signInWithPopup(googleProvider)
         .then((result) => {
-            const {displayName, email } = result.user;
-            const signedInUser = {name: displayName, email}
+            const {displayName} = result.user;
+            const signedInUser = {name: displayName}
             setLoggedInUser(signedInUser);
             console.log(signedInUser);
-            if (loggedInUser.name) {
-                history.replace(from);
-            }
+            setNewUser(signedInUser);
+            history.replace(from);
+            
             
         
         })
@@ -68,15 +68,11 @@ const Login = () => {
         console.log(result);
         const {displayName, email } = result.user;
         const signedInUser = {name: displayName, email}
-        const newUserInfo = {...user};
-            newUserInfo.error = ''
-            newUserInfo.success = true;
-            setUser(newUserInfo)
         setLoggedInUser(signedInUser);
         console.log(signedInUser);
-        if (loggedInUser.name) {
-            history.replace(from);
-        }
+        setNewUser(signedInUser);
+        history.replace(from);
+        
   })
   .catch((error) => {
     const newUserInfo = {...user}
