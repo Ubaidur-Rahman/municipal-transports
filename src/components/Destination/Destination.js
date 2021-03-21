@@ -6,6 +6,7 @@ import {
     useLoadScript,
     Marker,
   } from "@react-google-maps/api";
+import SearchResult from '../SearchResult/SearchResult';
   
 
 
@@ -37,16 +38,15 @@ const Destination = () => {
 
 
     const handleBlur= (e) => {
-        e.preventDefault();
-      
       const searchInput = {...searchArea};
       console.log( e.target.value);
       searchInput[e.target.name] = e.target.value;
       setSearchArea(searchInput);
+     
     }
   
-    const handleSearchResult = () => {
-        
+    const handleSearchResult = (e) => {
+      
     }
 // maps apiKey: 'AIzaSyCw1Cu5QmZqsFLWq-D7m12E3Qqjjj13xWY'
     
@@ -55,7 +55,7 @@ const Destination = () => {
             <div className="row mt-5 ">
                 <div className='search-area col-md-4 col-12 ali'>
                     <div>
-                    <h1>{searchArea.pickFrom}</h1>
+                    {searchArea && <h1>{searchArea.pickFrom} to {searchArea.pickTo}</h1>}
                         <h6>Pick From</h6>
                         <input className='w-100' name="pickFrom" onBlur={handleBlur} type="text" placeholder="Uttara" autoFocus />
                     </div>
